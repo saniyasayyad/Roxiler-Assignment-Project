@@ -6,8 +6,8 @@ export const validateForm = (data, type) => {
   if (type === 'signup' || type === 'addUser' || type === 'addStore') {
     const nameField = type === 'addUser' ? data.addName : 
                      type === 'addStore' ? data.addStoreName : data.name;
-    if (!nameField || nameField.length < 20 || nameField.length > 60) {
-      errors.name = 'Name must be between 20-60 characters';
+    if (!nameField || nameField.length < 5 || nameField.length > 40) {
+      errors.name = 'Name must be between 5-40 characters';
     }
     
     const addressField = type === 'addUser' ? data.addAddress : 

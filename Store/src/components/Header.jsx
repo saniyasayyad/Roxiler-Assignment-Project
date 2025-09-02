@@ -18,7 +18,7 @@ const Header = ({ title }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-6">
           <div className="flex items-center space-x-4">
-            {/* Brand icon */}
+           
             <div className="bg-gradient-to-br from-blue-500 to-purple-600 w-14 h-14 rounded-2xl flex items-center justify-center shadow-xl shadow-blue-500/25 hover:shadow-blue-500/40 transition-all duration-300 hover:scale-105">
               <Store className="text-white text-2xl" />
             </div>
@@ -38,7 +38,7 @@ const Header = ({ title }) => {
           
           {currentUser && (
             <div className="flex items-center space-x-3 ml-4">
-              {/* User avatar */}
+             
               <div className="w-11 h-11 bg-gradient-to-br from-slate-400 to-slate-600 rounded-full flex items-center justify-center text-white text-base font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer flex-shrink-0">
                 {currentUser.name ? currentUser.name.charAt(0).toUpperCase() : currentUser.email.charAt(0).toUpperCase()}
               </div>
@@ -56,8 +56,7 @@ const Header = ({ title }) => {
           )}
         </div>
       </div>
-      
-      {/* Modern gradient border */}
+   
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-300 to-transparent opacity-60"></div>
     </div>
   );

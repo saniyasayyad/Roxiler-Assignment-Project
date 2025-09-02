@@ -92,7 +92,7 @@ const Input = ({
           </button>
         )}
         
-        {/* Focus indicator */}
+  
         <div className={`absolute inset-0 rounded-xl bg-gradient-to-r from-blue-500/5 to-purple-500/5 opacity-0 transition-all duration-300 pointer-events-none ${
           isFocused ? 'opacity-100' : ''
         }`} />

@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 import pool from '../config/database.js';
 
-// Middleware to verify JWT token
+// Verify JWT access token and attach user to request
 export const authenticateToken = async (req, res, next) => {
   const authHeader = req.headers['authorization'];
   const token = authHeader && authHeader.split(' ')[1]; // Bearer TOKEN
@@ -45,7 +45,7 @@ export const authenticateToken = async (req, res, next) => {
   }
 };
 
-// Middleware to check if user has specific role
+// Factory to enforce a specific role (or list of roles)
 export const requireRole = (roles) => {
   return (req, res, next) => {
     if (!req.user) {
@@ -55,20 +55,13 @@ export const requireRole = (roles) => {
       });
     }
 
-    if (Array.isArray(roles)) {
-      if (!roles.includes(req.user.role)) {
-        return res.status(403).json({ 
-          success: false, 
-          message: 'Insufficient permissions' 
-        });
-      }
-    } else {
-      if (req.user.role !== roles) {
-        return res.status(403).json({ 
-          success: false, 
-          message: 'Insufficient permissions' 
-        });
-      }
+    const userRole = req.user.role;
+    const hasAccess = Array.isArray(roles) ? roles.includes(userRole) : userRole === roles;
+    if (!hasAccess) {
+      return res.status(403).json({ 
+        success: false, 
+        message: 'Insufficient permissions' 
+      });
     }
 
     next();
@@ -83,3 +76,4 @@ export const requireStoreOwner = requireRole('Store Owner');
 
 // Middleware to check if user is normal user or admin
 export const requireNormalUserOrAdmin = requireRole(['Normal User', 'System Administrator']);
+

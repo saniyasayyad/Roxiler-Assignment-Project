@@ -154,7 +154,7 @@ const AdminDashboard = () => {
         >
           <Input
             label="Name"
-            placeholder="Full name (20-60 characters)"
+            placeholder="Full name (5-40 characters)"
             value={userFormData.addName}
             onChange={(e) =>
               setUserFormData({ ...userFormData, addName: e.target.value })
@@ -327,7 +327,7 @@ const AdminDashboard = () => {
         >
           <Input
             label="Store Name"
-            placeholder="Store name (20-60 characters)"
+            placeholder="Store name (5-40 characters)"
             value={storeFormData.addStoreName}
             onChange={(e) =>
               setStoreFormData({ ...storeFormData, addStoreName: e.target.value })

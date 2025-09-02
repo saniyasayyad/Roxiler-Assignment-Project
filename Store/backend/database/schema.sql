@@ -1,4 +1,3 @@
--- Create database schema for Store Rating System
 
 -- Users table
 CREATE TABLE IF NOT EXISTS users (
@@ -49,7 +48,7 @@ BEGIN
     NEW.updated_at = CURRENT_TIMESTAMP;
     RETURN NEW;
 END;
-$$ language 'plpgsql';
+$$ LANGUAGE plpgsql;
 
 -- Triggers to automatically update updated_at
 CREATE TRIGGER update_users_updated_at BEFORE UPDATE ON users
@@ -118,3 +117,4 @@ VALUES
      '789 Market Street, Downtown, Market State 33333',
      NULL)
 ON CONFLICT (email) DO NOTHING;
+
